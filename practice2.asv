@@ -1,7 +1,8 @@
 
 fprintf('[Prob 2-1]\n')
 
-x = [(sqrt(5.2))^3, 6.71 * 10^3, (3 + 5.1^2) * cos(53), 15.8, nthroot(90, 3), sin(pi/3)/tand(20)]
+x = [(sqrt(5.2))^3, 6.71 * 10^3, (3 + 5.1^2) * cos(53) ...
+    , 15.8, nthroot(90, 3), sin(pi/3)/tand(20)]
 
 
 vA = [1:3:34]
@@ -38,12 +39,10 @@ pause
 
 fprintf('[Prob 2-4]\n')
 
-x = [0:0.5:5];
+close all
+x = 0:0.5:5;
 y = x.* exp(-x);
 
-y(x == 2.5)
-y(x == 0)
+y
 
 plot(x, y), grid on;
-
-pause
