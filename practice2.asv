@@ -1,13 +1,16 @@
+% Practice 2 정서진(2024112396)
 
 fprintf('[Prob 2-1]\n')
 
-x = [(sqrt(5.2))^3, 6.71 * 10^3, (3 + 5.1^2) * cos(53) ...
-    , 15.8, nthroot(90, 3), sin(pi/3)/tand(20)]
-
+x = [(sqrt(5.2))^3, 6.71 * 10^3, (3 + 5.1^2) * cosd(53), 15.8, 90^(1/3), sin(pi/3)/tand(20)]
+% sqrt(5.2^3) 도 상관없음. 
 
 vA = [1:3:34]
 vB = vA(1, 1:5)
 vB(1, 6:9) = vA(1, 9:12)
+vB = [vA(1:5) vA(9:12)]
+vB = vA([1:5 9:12])
+vA(6:8) = []
 
 pause
 
@@ -22,9 +25,13 @@ F = B * A
 G = E - F
 
 LHS = (A * B * C)'
+LHS2 = transpose(A * B * C)
 RHS = C' * B' * A'
+RHS2 = transpose(C) * transpose(B) * transpose(A)
+% transpose함수와 '와 다른 것은 실수부와 함수부를 함께 변환 하는 차이 
 
 LHS - RHS
+LHS2 - RHS2
 
 pause
 
@@ -39,10 +46,12 @@ pause
 
 fprintf('[Prob 2-4]\n')
 
-close all
-x = 0:0.5:5;
+x = [0:0.5:5];
 y = x.* exp(-x);
 
-y
+y(x == 2.5)
+y(x == 0)
 
 plot(x, y), grid on;
+
+pause
