@@ -78,7 +78,7 @@ N0 = 20;
 Nf = N0 * 2;
 syms t;
 eqn1 = N0 * exp(0.15 * t) == Nf; 
-tf = double(solve(eqn1, t))
+tf = double(solve(eqn1, t)) %여기서 double을 사용하지 않고 solve만 한다면 계산이 되지 않은 식으로 표현이 됨.
 
 % (b)
 t = 100/15 * log(1000000/20)
