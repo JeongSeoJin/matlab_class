@@ -1,85 +1,63 @@
-% Homework1 정서진(2024112396)
+% Homework2 정서진(2024112396)
 
 fprintf('[Prob 1]\n')
-% 1 ========================
-% (1) 1.(a)
-(22 + 5.1^2)/(50-6.3^2)
+x = [0:1:6]
+y = x.^2 - exp(0.5.*x) + x
 
-% (2) 2.(b)
-132^(1/3) + log(500)/8
-
-% (3) 3.(c)
-45 * (288/9.3 - 4.6^2) - 1065*exp(-1.5)
-
-% (4) 4.(d)
-(5.9^2 - 2.4^2) / 3 + (log10(12890)/exp(0.3))^2 %%%%%%%
-
-% (5) 5.(e)
-cos(7*pi/9) + tan(7*pi/15) * sind(15)
-pause 
+x = [1.5:0.5:4]
+y = (x.^4).* exp(-x)
+pause
 
 fprintf('[Prob 2]\n')
 
-% 2 =========================
-% (1)
-x = 5.1;
-y = 4.2;
+% 2
+V = round(linspace(4, 1, 7), 1)
 
-(x*y)^2 - (x+y)/(x-y)^2 + ((x+y)/(2*x-y))^(1/2)
+r = round((3.*V./4*pi).^(1/3), 1)
 
-% (2)
-a = 12;
-b = 5.6;
-c = (3*a)/(b^2);
-d = (a-b)^2/c;
-
-a/b + (d-c)/(d+c) - (d-b)^2 %%%%%%%%%%%%
+S = round((4*pi.*r.^2), 1)
 pause
 
 fprintf('[Prob 3]\n')
 
-% 3 ===========================
-% (1)
-r = 24;
-aVol = (32/3 * pi * r^3)^(1/3)
+% 3
+u = [5 -2 4]
+v = [-2 7 3]
+w = [8 1 -3]
+LHS = dot((u + v), cross((v + w), (w+u)))
+RHS = dot(2*u, cross(v, w))
 
-% (2)
-aArea = (16/7*pi*24^2)^(1/2)
+result = LHS - RHS
 pause
 
 fprintf('[Prob 4]\n')
 
-% 4 ===========================
-% (1)
-a = 5.3; gammaD = 42; b = 6;
+% 4
+syms a b c d e f
+eqn1 = 2*a - 4*b + 5*c - 3.5*d + 1.8*e +4*f == 52.52;
+eqn2 = -1.5*a +3*b +4*c - d -2*e +5*f == -21.1;
+eqn3 = 5*a + b - 6*c +3*d -2*e + 2*f == -27.6;
+eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f == 9.16;
+eqn5 = 4*a + b -c +4*d - 2*e -4*f == -17.9;
+eqn6 = 3*a +b -c +4*d -2*e -4*f == -16.2;
 
-c = (a^2 + b^2 - 2*a*b*cosd(gammaD))^(1/2)
-alpha = acosd((b^2 + c^2 - a^2)/(2*b*c))
-beta = acosd((a^2 + c^2 - b^2)/(2*a*c))
+solution = solve([eqn1, eqn2, eqn3, eqn4, eqn5, eqn6], ...
+    [a, b, c, d, e, f]);
 
-totalAngle = gammaD + alpha + beta
-pause
+a = solution.a
+b = solution.b
+c = solution.c
+d = solution.d
+e = solution.e
+f = solution.f
 
-fprintf('[Prob 5]\n')
+eqn1 = 2*a - 4*b + 5*c - 3.5*d + 1.8*e +4*f
+eqn2 = -1.5*a +3*b +4*c - d -2*e +5*f
+eqn3 = 5*a + b - 6*c +3*d -2*e + 2*f
+eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f
+eqn5 = 4*a + b -c +4*d - 2*e -4*f
+eqn6 = 3*a +b -c +4*d -2*e -4*f
 
-% 5 ===========================
-% (1)
-ceil(315/37)*37 - 315
+disp("Checked")
 
-% (2)
-739 - 54*fix(739/54)
-pause
-
-fprintf('[Prob 6]\n')
-
-% 6 ===========================
-% (a)
-N0 = 20;
-Nf = N0 * 2;
-syms t;
-eqn1 = N0 * exp(0.15 * t) == Nf; 
-tf = double(solve(eqn1, t))
-
-% (b)
-t = 100/15 * log(1000000/20)
 pause

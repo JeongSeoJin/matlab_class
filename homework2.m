@@ -38,7 +38,7 @@ eqn1 = 2*a - 4*b + 5*c - 3.5*d + 1.8*e +4*f == 52.52;
 eqn2 = -1.5*a +3*b +4*c - d -2*e +5*f == -21.1;
 eqn3 = 5*a + b - 6*c +3*d -2*e + 2*f == -27.6;
 eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f == 9.16;
-eqn5 = 4*a + b -c +4*d - 2*e -4*f == -16.2;
+eqn5 = 4*a + b -c +4*d - 2*e -4*f == -17.9;
 eqn6 = 3*a +b -c +4*d -2*e -4*f == -16.2;
 
 solution = solve([eqn1, eqn2, eqn3, eqn4, eqn5, eqn6], ...
@@ -50,5 +50,14 @@ c = solution.c
 d = solution.d
 e = solution.e
 f = solution.f
+
+eqn1 = 2*a - 4*b + 5*c - 3.5*d + 1.8*e +4*f
+eqn2 = -1.5*a +3*b +4*c - d -2*e +5*f
+eqn3 = 5*a + b - 6*c +3*d -2*e + 2*f
+eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f
+eqn5 = 4*a + b -c +4*d - 2*e -4*f
+eqn6 = 3*a +b -c +4*d -2*e -4*f
+
+disp("Checked")
 
 pause
