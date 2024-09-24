@@ -41,8 +41,9 @@ eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f == 9.16;
 eqn5 = 4*a + b -c +4*d - 2*e -4*f == -17.9;
 eqn6 = 3*a +b -c +4*d -2*e -4*f == -16.2;
 
+% 4 - way1
 solution = solve([eqn1, eqn2, eqn3, eqn4, eqn5, eqn6], ...
-    [a, b, c, d, e, f]);
+     [a, b, c, d, e, f]);
 
 a = solution.a
 b = solution.b
@@ -58,6 +59,15 @@ eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f
 eqn5 = 4*a + b -c +4*d - 2*e -4*f
 eqn6 = 3*a +b -c +4*d -2*e -4*f
 
-disp("Checked")
+disp("checked")
+
+% 4- way2
+[A, B] = equationsToMatrix([eqn1, eqn2, eqn3, eqn4, eqn5, eqn6], ...
+    [a, b, c, d, e, f]);
+x = A\B
+
+sol_to_equ = A*x - B;
+
+disp(sol_to_equ, "checked")
 
 pause
