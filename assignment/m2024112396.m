@@ -1,73 +1,74 @@
-% Homework2 정서진(2024112396)
+% Practice 3 정서진(2024112396)
 
-fprintf('[Prob 1]\n')
-x = [0:1:6]
-y = x.^2 - exp(0.5.*x) + x
+%1
+disp(' ')
+name = input('Your Name : ', 's') % 's' : input as string
+ID  = input('Student ID : ') 
+disp(' ')
 
-x = [1.5:0.5:4]
-y = (x.^4).* exp(-x)
-pause
+Tenpi = 31.415926
 
-fprintf('[Prob 2]\n')
+%2
+disp(' ')
+fprintf([' TP1 = %-2.2f\n TP2 = %-7.5f\n TP3 = %+.1f\n TP4 = %.3e\n' ...
+    ' TP5 = %.6E\n'],Tenpi, Tenpi, Tenpi, Tenpi, Tenpi)
+disp(' ')
 
-% 2
-V = round(linspace(4, 1, 7), 1)
+%3 - 1
+disp(' ')
+fprintf(['Spring Constant [N/cm]\nTest carried out on Oct. 26th, 2023 at DGU.\n[ Blank Line ]\n'])
 
-r = round((3.*V./4*pi).^(1/3), 1)
+%3 - 2
+N5 = [1 2 3 4 5 ];
+M5 = [0.5 0.7 1.0 1.2 1.5];
+L5 = [12.3 18.9 23.7 32.1 36.3];
 
-S = round((4*pi.*r.^2), 1)
-pause
+%3 - 3
+spring_const = length ./ mass;
 
-fprintf('[Prob 3]\n')
+%3 - 4
+K5 = [N5' M5' L5' spring_const'];
+table = ['    No.', '       Mass(kg)', ' Length(cm)', 'k(N/cm)'];
+% with_table = [table; K5]
 
-% 3
-u = [5 -2 4]
-v = [-2 7 3]
-w = [8 1 -3]
-LHS = dot((u + v), cross((v + w), (w+u)))
-RHS = dot(2*u, cross(v, w))
+disp('Spring Constant Test')
+disp(' ')
+disp(table)
+disp(K5)
 
-result = LHS - RHS
-pause
+fprintf('Spring Constant Test\n\n')
+fprintf('    No.        Mass(kg)   Length(cm)K(N/cm)\n')
+fprintf('%10.4f %10.4f %10.4f %10.4f\n', K5')
 
-fprintf('[Prob 4]\n')
 
-% 4
-syms a b c d e f
-eqn1 = 2*a - 4*b + 5*c - 3.5*d + 1.8*e +4*f == 52.52;
-eqn2 = -1.5*a +3*b +4*c - d -2*e +5*f == -21.1;
-eqn3 = 5*a + b - 6*c +3*d -2*e + 2*f == -27.6;
-eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f == 9.16;
-eqn5 = 4*a + b -c +4*d - 2*e -4*f == -17.9;
-eqn6 = 3*a +b -c +4*d -2*e -4*f == -16.2;
+%4 - 1
+disp(' ')
+x = [0:0.1:10]';
 
-% 4 - way1
-solution = solve([eqn1, eqn2, eqn3, eqn4, eqn5, eqn6], ...
-     [a, b, c, d, e, f]);
+%4 - 2
+y1 = exp(-x);
+y2 = x .* exp(-x);
+y3 = x .^2 .* exp(-x);
 
-a = solution.a
-b = solution.b
-c = solution.c
-d = solution.d
-e = solution.e
-f = solution.f
+%4 - 3
+plot(x, y1, '-b', x, y2, ':ro', x, y3, '-.k*')
 
-eqn1 = 2*a - 4*b + 5*c - 3.5*d + 1.8*e +4*f
-eqn2 = -1.5*a +3*b +4*c - d -2*e +5*f
-eqn3 = 5*a + b - 6*c +3*d -2*e + 2*f
-eqn4 = 1.2*a -2*b+3*c +4*d -e +4*f
-eqn5 = 4*a + b -c +4*d - 2*e -4*f
-eqn6 = 3*a +b -c +4*d -2*e -4*f
+figure(2)
+plot(x, y1, '-b')
+hold on
+plot(x, y2, ':ro')
+hold on
+plot(x, y3, '-.k*')
 
-disp("checked")
+%5 - 1
+x = [-1:0.1:1];
+y = [-1:0.1:1];
+[X, Y] = meshgrid(x,y);
+Z = X.^2 - Y.^2;
+figure(3)
 
-% 4- way2
-[A, B] = equationsToMatrix([eqn1, eqn2, eqn3, eqn4, eqn5, eqn6], ...
-    [a, b, c, d, e, f]);
-x = A\B
+%5 - 2
+mesh(X, Y, Z)
 
-sol_to_equ = A*x - B;
-
-disp(sol_to_equ, "checked")
-
-pause
+%5 - 3
+surface(X, Y, Z)
