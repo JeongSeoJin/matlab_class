@@ -1,2 +1,0 @@
-allGames = input('Enter the points scored in the three games'); %입력 시에 행렬로 입력을 해주어야함.  [24 12 18]
-avePoints = mean(allGames)
