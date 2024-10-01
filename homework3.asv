@@ -33,8 +33,6 @@ X = -pi:h:2*pi;
 f = sin(2.*X) .* cos(0.5.*X);
 Y = diff(f)/h;
 plot(X(:,1:length(Y)),Y,'r',X,f,'b')
-title(" 𝑓(𝑥) = sin(2𝑥)(cos(0.5𝑥))^2")
-legend('f(x)', 'f'+"'"+'(x)')
 
 pause
 
@@ -57,14 +55,11 @@ fprintf('[Prob 5]\n')
 x = [-2 : 0.1 : 2];
 y = [-2 : 0.1 : 2];
 [X, Y] = meshgrid(x, y);
-Z = -1.4 .* X .* Y .^3 + 1.4 .* Y .* X.^3;
+Z = 1.4 .* X .* Y .^3 + 1.4 .* Y .* X.^3;
 
 figure(3)
 mesh(X,Y,Z)
-surface(X, Y, Z)
-title(" 3D surface plot of 𝑧 = −1.4𝑥𝑦^3  + 1.4𝑦𝑥^3")
 figure(4)
-mesh(X,Y,Z)
-title(" 3D mesh plot of 𝑧 = −1.4𝑥𝑦^3  + 1.4𝑦𝑥^3")
+surface(X, Y, Z)
 
 pause
