@@ -1,7 +1,5 @@
 % practice 4 정서진(2024112396)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 fprintf('[Prob 1]\n')
 
 t_engine = 0.2;
@@ -11,7 +9,7 @@ m = 0.05;
 vpara = -25;
 dt = 0.01; % --> discretization : 이산화.
 
-%%
+% =============================
 n = 1;
 t(n) = 0;
 v(n) = 0;
@@ -57,13 +55,11 @@ plot(t, v, t2,v2, 'o')
 grid on
 
 subplot(1,2,2)
-plot(t, h, t2, h2, '^')
+plot(t, h)
 
 grid on
 
 pause 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 fprintf('[Prob 2]\n')
 
@@ -87,8 +83,6 @@ disp(c)
 
 pause
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 fprintf('[Prob 3]\n')
 
 n = input('Type in Number of Parcels : ');
@@ -102,21 +96,14 @@ fprintf('total Postage is %i won. \n', charge);
 
 pause
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-fprintf('[Prob 4]\n');
+fprintf('[Prob 4]\n')
 my_num = input('Type in the Number : ');
-sgn = sign(my_num); 
-
-switch sgn
-    case -1
+sign = sign(my_num);
+switch sign
+    case sign < 0
         fprintf('%i is Negative.\n', my_num);
-    case 0
+    case sign == 0
         fprintf('%i is Zero.\n', my_num);
-    case 1
+    case sign > 0
         fprintf('%i is Positive.\n', my_num);
 end
-
-pause
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
