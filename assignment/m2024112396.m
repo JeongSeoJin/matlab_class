@@ -1,122 +1,107 @@
-% practice 4 정서진(2024112396)
+% Homework 4 정서진(2024112396)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fprintf("[Prob 1]\n")
 
-fprintf('[Prob 1]\n')
+row = 6; column = 4;
 
-t_engine = 0.2;
-F = 16;
-g = 9.81;
-m = 0.05;
-vpara = -25;
-dt = 0.01; % --> discretization : 이산화.
+A = [];
 
-%%
-n = 1;
-t(n) = 0;
-v(n) = 0;
-h(n) = 0;
+% matrix comprised with '1'
+% for j = 1:column
+%     for i = 1:row
+%         A(i, j)= 1;
+%     end
+% end
+% disp(A)
 
-% segment1
-a1 = (16 - m*g)/m;
+for j = 1:column
+    for i = 1:row
+        A(i, j)= 2*j - 3*i;
+    end
+end
+disp(A)
 
-while t(n) < t_engine
-    n = n+1;
-    t(n) = t(n-1) + dt;
-    v(n) = a1 * t(n);
-    h(n) = 0.5 * a1 * t(n)^2;
-end 
+pause
 
-v1 = v(n);
-h1 = h(n);
-t1 = t(n);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% segment2
-while v(n) > vpara
-    n = n+1;
-    t(n) = t(n-1) + dt;
-    v(n) = v1 -g * (t(n)-t1);
-    h(n) = h1 + v1*(t(n)-t1) - 0.5 * g * (t(n)-t1)^2;
+fprintf("[Prob 2]\n")
+
+x = [9 -1.5 13.4 13.3 -2.1 4.6 1.1 5 -6.1 10 0.2];
+
+for j = 1:length(x)
+    for i = 1:length(x)
+        if (x(j) < x(i))
+            a = x(j);
+            x(j) = x(i);
+            x(i) = a;
+        end
+    end
+end
+disp(x)
+if (x == sort(x))
+    fprintf("rearrangement complete!\n");
+else
+    fprintf("invalid\n");
 end
 
-v2 = v(n);
-h2 = h(n);
-t2 = t(n);
+pause
 
-while h(n) > 0
-    n = n + 1;
-    t(n) = t(n-1) + dt;
-    v(n) = vpara;
-    h(n) = h2 + vpara*(t(n)-t2);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+fprintf("[Prob 3]")
+
+disp(" ")
+
+n_vec = 0;
+sum_result_vec = 0;
+
+for n = 1:500
+    summation = n * (n + 1) / 2;
+    if (mod(summation, 111) == 0)
+        if summation < 1000
+            n_vec = n;
+            sum_result_vec = summation;
+        end
+
+    end
 end
 
-figure(1)
-subplot(1,2,1)
-plot(t, v, t2,v2, 'o')
-
-grid on
-
-subplot(1,2,2)
-plot(t, h, t2, h2, '^')
-
-grid on
-
+disp('    n    sum')
+table = [n_vec sum_result_vec];
+disp(table)
 pause 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-fprintf('[Prob 2]\n')
+fprintf("[Prob 4]")
 
-%2-(1)
-n = 10;
-for i = 1:n
-    fprintf("%6i %8.4f\n", i, sqrt(i));
-end
+n = [10, 100, 1000, 10000];
+xi = 0;
+yi = 0;
+x = [xi];
+y = [yi];
 
-%2-(2)
-a = [3, 40, 1, 8, 0];
-b = [-7, 5, 4, 16, 1];
-c = [];
-
-n = 1;
-while ( n <= 5 )
-    c(n) = a(n) + b(n);
-    n = n + 1
-end
-disp(c)
-
-pause
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-fprintf('[Prob 3]\n')
-
-n = input('Type in Number of Parcels : ');
-type = input('Choose the Type. (registered = 1, regular = 0) : ');
-if type == 1
-    charge = 4000 * n;
-else
-    charge = 2700 * n;
-end
-fprintf('total Postage is %i won. \n', charge);
-
-pause
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-fprintf('[Prob 4]\n');
-my_num = input('Type in the Number : ');
-sgn = sign(my_num); 
-
-switch sgn
-    case -1
-        fprintf('%i is Negative.\n', my_num);
-    case 0
-        fprintf('%i is Zero.\n', my_num);
-    case 1
-        fprintf('%i is Positive.\n', my_num);
+for i = 1:length(n)
+    for j = 1:n(i)
+        rule = randi([1,3]);
+        switch rule
+            case 1
+                x(j+1) = 0.5 * x(j);
+                y(j+1) = 0.5 * y(j);
+            case 2
+                x(j+1) = 0.5 * x(j) + 0.25;
+                y(j+1) = 0.5 * y(j) + sqrt(3) / 4;
+            case 3
+                x(j+1) = 0.5 * x(j) + 0.5;
+                y(j+1) = 0.5 * y(j);
+        end
+    end
+    figure(i)
+    plot(x, y, '^')
+    title('Sierpinski Triangle plotting')
+    xlabel('x');
+    ylabel('y');
 end
 
 pause
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

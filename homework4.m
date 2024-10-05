@@ -67,6 +67,7 @@ for n = 1:500
     end
 end
 
+disp('    n    sum')
 table = [n_vec sum_result_vec];
 disp(table)
 pause 
@@ -75,6 +76,32 @@ pause
 
 fprintf("[Prob 4]")
 
+n = [10, 100, 1000, 10000];
+xi = 0;
+yi = 0;
+x = [xi];
+y = [yi];
 
+for i = 1:length(n)
+    for j = 1:n(i)
+        rule = randi([1,3]);
+        switch rule
+            case 1
+                x(j+1) = 0.5 * x(j);
+                y(j+1) = 0.5 * y(j);
+            case 2
+                x(j+1) = 0.5 * x(j) + 0.25;
+                y(j+1) = 0.5 * y(j) + sqrt(3) / 4;
+            case 3
+                x(j+1) = 0.5 * x(j) + 0.5;
+                y(j+1) = 0.5 * y(j);
+        end
+    end
+    figure(i)
+    plot(x, y, '^')
+    title('Sierpinski Triangle plotting')
+    xlabel('x');
+    ylabel('y');
+end
 
 pause
