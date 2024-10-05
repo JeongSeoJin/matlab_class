@@ -68,7 +68,7 @@ det(matA) % 역행렬을 구할 수 있는 경우 이 값이 0이라면 역행�
 vecX = inv(matA)*vecB
 
 verX2 = matA\vecB
-% vecX2 = matB/matA 교환법칙이 성립하지 않기 때문에 
+% vecX2 = matB/matA 사용 불가 => because, 교환법칙이 성립하지 않기 때문에 
 
 A = [1 1; 2 2]
 B = [1 2; 3 4]

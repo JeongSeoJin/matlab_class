@@ -24,7 +24,7 @@ M5 = [0.5 0.7 1.0 1.2 1.5];
 L5 = [12.3 18.9 23.7 32.1 36.3];
 
 %3 - 3
-spring_const = length ./ mass;
+spring_const = L5 ./ M5;
 
 %3 - 4
 K5 = [N5' M5' L5' spring_const'];

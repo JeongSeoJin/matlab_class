@@ -5,8 +5,10 @@ clc
 disp('Hello world!') %\n기능을 탑재 : 자동으로 줄바꿈 해줌.
 fprintf('Hello world!\n')
 
-xVal = 8.5213; yVal = xVal^2;
-fprintf('xVal is %-5.3f, and its square is %-2.4f.\n',xVal,yVal)
+xVal = 0.0000045213; yVal = xVal^2;
+fprintf('xVal is %-10.10e, and its square is %-2.4f.\n',xVal,yVal)
+fprintf('xVal is %+5.3f, and its square is %-2.4f.\n',xVal,yVal)
+fprintf('xVal is %5.3f, and its square is %-2.4f.\n',xVal,yVal)
 
 x = 1:8;
 
@@ -47,3 +49,5 @@ plot(x,yd,'--r')
 subplot(3,1,3)
 plot(x,ydd,':k') 
 
+% fplot
+fplot(@(x) 8*x.^2 + 5*cos(x), [-3, 3], '--r^')

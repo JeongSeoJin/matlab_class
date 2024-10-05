@@ -119,13 +119,16 @@ end
 
 %step4
 
-for(i = 1:n-1)
-    if d_vec(i) == max(d_vec, [], 'all')
-        max_val = i;
-    elseif d_vec(i) == min(d_vec, [], 'all')
-        min_val = i;
-    end
-end
+% for(i = 1:n-1)
+%     if d_vec(i) == max(d_vec, [], 'all')
+%         max_val = i;
+%     elseif d_vec(i) == min(d_vec, [], 'all')
+%         min_val = i;
+%     end
+% end
+
+[d_max, max_val] = max(d_vec);
+[d_min, min_val] = min(d_vec);
 
 X_max = [x1, xt(max_val+1)];
 X_min = [x1, xt(min_val+1)];
