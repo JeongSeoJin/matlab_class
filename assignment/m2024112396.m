@@ -6,14 +6,6 @@ row = 6; column = 4;
 
 A = [];
 
-% matrix comprised with '1'
-% for j = 1:column
-%     for i = 1:row
-%         A(i, j)= 1;
-%     end
-% end
-% disp(A)
-
 for j = 1:column
     for i = 1:row
         A(i, j)= 2*j - 3*i;
@@ -84,7 +76,7 @@ y = [yi];
 
 for i = 1:length(n)
     for j = 1:n(i)
-        rule = randi([1,3]);
+        rule = randperm(3,1);
         switch rule
             case 1
                 x(j+1) = 0.5 * x(j);

@@ -84,7 +84,7 @@ y = [yi];
 
 for i = 1:length(n)
     for j = 1:n(i)
-        rule = randi([1,3]);
+        rule = randperm(3,1);
         switch rule
             case 1
                 x(j+1) = 0.5 * x(j);
