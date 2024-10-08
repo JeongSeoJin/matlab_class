@@ -56,23 +56,23 @@ y = zeros(1, n);
 x(1) = 0;
 y(1) = 0;
 
-q = zeros(1, n);
+q = [];
 
 for i = 1:n
-    q(i) = rand(1);
-    if q(i) >= 0.5
+    q = rand(1);
+    if q >= 0.5
         x(i+1) = x(i) + 1;
         y(i+1) = y(i);
         
     else 
         x(i+1) = x(i);
         y(i+1) = y(i) + 1;
+        plot(x, y, 'r^');
     end
 end
 
-plot(x(q>=0.5), y(q>=0.5), 'b>');
-hold on
-plot(x(q<0.5), y(q<0.5), 'r^');
+plot(x, y, 'r^');
+
 grid on
 set(gca, 'dataaspectratio', [1, 1, 1])
 
