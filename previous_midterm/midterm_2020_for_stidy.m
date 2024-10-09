@@ -73,9 +73,9 @@ y = y + (y==0) * eps;
 
 Z = (Y.^2 .* sin(X)) ./ x;
 
-indx = (Z>20 & (Z<40));
+indx = (Z>20) & (Z<40);
 
-disp("number os points is %d", sum(sum(indx)))
+sum(sum(indx))
 
 subplot(1, 2, 1);
 mesh(X, Y, Z);
