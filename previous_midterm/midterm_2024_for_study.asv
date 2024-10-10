@@ -93,10 +93,12 @@ for i = 1:5
             arr_theta(2*i-1) = theta2(i);
         elseif i >= 4
             arr_theta(2*i-6) = theta2(i);
+        arr_theta(6) = 
         end
     end
 end
-% arr_theta(6) = theta(1);
+
+disp(arr_theta)
 
 x2 = r * cosd(theta2);
 y2 = r * sind(theta2);

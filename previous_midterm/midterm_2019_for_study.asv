@@ -111,19 +111,15 @@ E = 1;
 Sn = 0;
 
 for n = 1:10
-    An = (-1)^(n+1) * (x_val^n / n);
-
-    if (n == 1)
-        Sn = An;
-    else
-        Sn = Sp + An;
+    An = (-1)^(n+1) * x_val^n / n;
+    % Sn = An;
+    if n > 1
+        % Sp = Sn;
+        Sn = Sn + An;
         E = abs((Sn - Sn - An) / Sn);
-    end
 
-    Sp = Sn
+    end
 end
 
-disp("real value : ")
-disp(log(x_val + 1))
-disp("approximated value : ")
-disp(Sn)
+disp(real value : )
+log(x_val + 1)
