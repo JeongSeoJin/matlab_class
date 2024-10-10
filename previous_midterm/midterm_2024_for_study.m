@@ -8,7 +8,8 @@ pause  % 결과 확인 후 다음 문제 진행
 theta = 15:15:75 * pi / 180;  % 각도를 라디안으로 변환
 f = cos((1 ./ theta) .* (tan(theta)).^0.5) + (1 ./ sin(theta))
 pause
-    
+
+A = [-2*eye(3)+[[0;-3;-4] [zeros(3,2)]] ones(3, 1) linspace(1, 1, 3)']
 
 pause
 
