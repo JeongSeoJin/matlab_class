@@ -1,4 +1,4 @@
-% Homework5 정서진(2024112396)
+% Practice5 정서진(2024112396)
 
 fprintf("[Prob1]\n");
 
