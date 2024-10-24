@@ -7,7 +7,6 @@ y1 = linspace(0, 24, 100);
 vol = VolFuel(y1);
 
 plot(y1, vol);
-disp(' ')
 pause;
 close all
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
