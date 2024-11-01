@@ -5,7 +5,7 @@ polyval(p, 9)
 
 %% plotting graph using polyval
 x = -1.5:0.1:6.7;
-y = polyval(p, x);
+y = polyval(p, x); %x에서의 p(다항식)의 값을 y에 저장.
 plot(x, y);
 grid on
 
