@@ -1,4 +1,4 @@
-% Homework6 정서진(2024112396)
+% Practice 7 정서진(2024112396)
 
 %% problem 1
 clear; close all; clc;
@@ -39,6 +39,8 @@ fprintf('y2_min = %f\n', y2_min)
 fprintf('x2_max = %f\n', x2_max)
 fprintf('y2_max = %f\n', y2_max)
 
+pause;
+
 %% problem 2
 clear; close all; clc;
 
@@ -49,6 +51,8 @@ q1 = integral(@(x)cos(x.^2), 0, sqrt(2*pi))
 
 %(2)
 q2 = integral2(@(x, y) x.*y.^2, 1, 3, 0, 1)
+
+pause;
 
 %% problem 3
 clear; close all; clc;
@@ -65,6 +69,8 @@ yt = @(t)(-0.5*(cos(t)+sin(t) + 10.5*exp(t)))
 fplot(yt, [0, 3.14])
 hold on
 plot(t1, y1, 'o')
+
+pause;
 
 %% Problem 4
 clear; close all; clc;
@@ -89,3 +95,5 @@ plot(t, z(:,2), 'r*');
 plot(t, y_analytical, 'b-', 'LineWidth', 1.5);
 
 grid on;
+
+pause;
