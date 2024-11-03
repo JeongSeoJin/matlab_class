@@ -68,7 +68,7 @@ dvdt = @(t, v)-0.0035*v.^2-3;
 [t, v] = ode45(dvdt, [0:1:13], 83.3333); 
 
 subplot(2, 1, 1);
-plot(t, v, 'r');
+plot(t, v);
 xlabel("Time (s)")
 ylabel("Velocity (m/s)")
 grid on;
@@ -83,7 +83,7 @@ end
 x = x';
 
 subplot(2, 1, 2);
-plot(1:13, x, 'b');
+plot(1:13, x);
 xlabel("Time (s)")
 ylabel("Distance (m)")
 hold on;
