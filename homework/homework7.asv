@@ -60,6 +60,27 @@ pause;
 %% problem 4
 clear; close all; clc;
 fprintf("[Prob 4]\n")
+% 
+% %(a)
+% accel = @(t, v) -0.0035.*v.^2 -3;
+% vi = 300*(1000/3600); % km/h -> m/s
+% 
+% 
+% 
+% func = @(v)-1 ./ (3.5*10^3.*v.^2 + 3);
+% 
+% t = integral(func, 83.33333333, 0)
+% 
+% dvdt = @(v, t)-0.0035.*v.^2-3;
+% [v, t] = ode45(dvdt, [0, 100], 83.3333);
+% plot(v, t)
+% %(b)
+% 
+% 
+% %(c)
+% pause;
+
+% time = 0:1:13
 
 %(a)
 
@@ -67,10 +88,7 @@ dvdt = @(t, v)-0.0035*v.^2-3;
 
 [t, v] = ode45(dvdt, [0:1:13], 83.3333); % 구간의 범위 이므로 t의 범위. 함수 값은 v
 
-subplot(2, 1, 1);
 plot(t, v, 'r');
-xlabel("Time (s)")
-ylabel("Velocity (m/s)")
 grid on;
 hold on;
 
@@ -82,11 +100,4 @@ for i=2:1:13
 end
 x = x';
 
-subplot(2, 1, 2);
-plot(1:13, x, 'b');
-xlabel("Time (s)")
-ylabel("Distance (m)")
-hold on;
-grid on;
-
-pause;
+% plot(1:13, x, 'b');

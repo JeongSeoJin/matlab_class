@@ -81,7 +81,7 @@ clear; close all; clc;
 fprintf("[Prob 4]\n")
 
 %(1)
-tspan = 0:1:20;
+tspan = 0:0.1:20;
 z0 = [1; 0];
 odefun = @(t, z) [z(2); -z(1) + sin(5*t)];
 
@@ -90,13 +90,13 @@ odefun = @(t, z) [z(2); -z(1) + sin(5*t)];
 
 [t, z] = ode45(odefun, tspan, z0);
 
-%actual correct
+%
 y_analytical = -(1/24)*sin(5*t) + (5/24)*sin(t) + cos(t);
 
 figure;
-plot(t, z(:,1), 'bo'); hold on;
-plot(t, z(:,2), 'r*'); hold on;
-plot(t, y_analytical, 'b', 'LineWidth', 1.5); hold on;
+plot(t, z(:,1), '.-'); hold on;
+plot(t, z(:,2), '--'); hold on;
+plot(t, y_analytical, 'b-', 'LineWidth', 1.5);
 
 grid on;
 

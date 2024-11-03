@@ -1,103 +1,92 @@
-% Practice 6 정서진(2024112396)
+% Homework 7 정서진(2024112396)
 
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-disp('[Prob 1]')
-disp('1 - (1)')
-f1 = [3 15 0 -10 -3 15 -40];
-f2 = [3 0 -2 -6];
+%% problem 1
+clear; close all; clc;
+fprintf("[Prob 1]\n")
 
-f1Val = polyval(f1,0.5);
-f2Val = polyval(f2,0.5);
-fprintf('f1(0.5) = %.4f\n', f1Val)
-fprintf('f2(0.5) = %.4f\n', f2Val)
+t = 0:1:7;
+v = [0 14 39 69 95 114 129 139];
 
-disp('1 - (2)')
-f3 = conv(f1,f2);
-f3Val = polyval(f3, 0.5);
-disp(f3Val - f1Val*f2Val)
-
-disp('1 - (3)')
-[q,r] = deconv(f1,f2);
-disp(f1 - (conv(q,f2)+r))
-%Ans. f4 = q + r/f2
-
-disp('1 - (4)')
-[n,d] = polyder(f1,f2);
-derVal1 = polyval(n,1)/polyval(d,1);
-fprintf('derVal1 = %.4f\n',derVal1)
-
-disp('1 - (5)')
-dq = polyder(q);
-[dr, df2] = polyder(r,f2);
-derVal2 = polyval(dq,1) + polyval(dr,1)/polyval(df2,1);
-fprintf('derVal2 = %.4f\n\n',derVal2)
+distance = trapz(t, v)
 
 pause;
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-disp('[Prob 2]')
-disp('2 - (1)')
+%% problem 2
+clear; close all; clc;
+fprintf("[Prob 2]\n")
 
-xi = [0 1 2 3];
-yi = [1 2.3 2.8 3.4];
+b = 5;
 
-p2 = polyfit(xi,yi,2);
+x_prime = @(t)(-2*b*sin(t)+2*b*sin(2*t));
+y_prime = @(t)(2*b*cos(t)-2*b*cos(2*t));
 
-a = p2(1);
-b = p2(2);
-c = p2(3);
-
-yj = polyval(p2,1.5);
-
-fprintf('yj = %.4f\n',yj)
-
-disp('2 - (2)')
-
-xk = 1.5;
-ykLin = interp1(xi, yi,xk,'linear');
-ykSpl = interp1(xi, yi,xk,'spline');
-ykPch = interp1(xi, yi,xk,'pchip');
-
-fprintf('Linear = %.4f\n',ykLin)
-fprintf('Spline = %.4f\n',ykSpl)
-fprintf('Pchip = %.4f\n\n',ykPch)
+fplot(x_prime, y_prime)
+func = @(t)sqrt(x_prime(t).^2 + y_prime(t).^2)
+length = integral(func, 0, 2*pi);
+fprintf("length of the curve is %f", length)
 
 pause;
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-disp('[Prob 3]')
+%% problem 3
+clear; close all; clc;
+fprintf("[Prob 3]\n")
 
-m = 1000;
-k = 5*10^6;
-alp = k/(4*m*pi^2);
+s = @(t) sin(t.^2);
+c = @(t) cos(t.^2);
+S = []
+C = []
+x = 0:0.05:4
+j = 1
+for i = 0:0.05:4
+    S(j) = integral(s, 0, i);
+    C(j) = integral(c, 0, i);
+    j = j + 1;
+end
 
-p1 = [-1 0 alp];
-p2 = [-1 0 alp*2];
-p3 = [alp^2 0 -2*alp^3];
+plot(x, S)
 
-p4 = conv(p2,p2) + [0 0 0 0 -alp^2];
-p5 = conv(p1,p4);
-p6 = p5 + [0 0 0 0 p3];
+hold on
+plot(x, C, '-')
 
-NatFreq = roots(p6);
-NatFreq_logic = NatFreq(NatFreq>0);
-fprintf('NatFreq = %.4f\n\n',NatFreq_logic);
+legend("S(x)","C(x)");
+xlabel("x");
+ylabel("Fresnel Integral");
+
+figure(2);
+plot(C, S);
+xlabel('C(x)');
+ylabel('S(x)');
 
 pause;
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-disp('[Prob 4]')
 
-p1 = [1 0];
-p2 = [1 1.8];
-p3 = [1 -0.4];
-p4 = [1 -1.6];
+%% problem 4
+clear; close all; clc;
+fprintf("[Prob 4]\n")
 
-p5 = conv(p1,p2);
-p6 = conv(p3,p4);
-p = conv(p5,p6);
+%(a)
 
-x = -2:0.1:2;
-y = polyval(p,x);
-plot(x,y)
+dvdt = @(t, v)-0.0035*v.^2-3;
+
+[t, v] = ode45(dvdt, [0:1:13], 83.3333); 
+
+subplot(2, 1, 1);
+plot(t, v, 'r');
+xlabel("Time (s)")
+ylabel("Velocity (m/s)")
+grid on;
+hold on;
+
+%(b)
+
+x = []
+for i=2:1:13
+    x(i) = trapz(t(1:i), v(1:i));
+end
+x = x';
+
+subplot(2, 1, 2);
+plot(1:13, x, 'b');
+xlabel("Time (s)")
+ylabel("Distance (m)")
+hold on;
 grid on;
 
 pause;
-close all;
