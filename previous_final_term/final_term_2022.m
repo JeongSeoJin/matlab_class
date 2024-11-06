@@ -82,3 +82,5 @@ yp = b*exp(m*xp);
 plot(x, y, 'o', xp, yp);
 
 %% problem 3
+clear; clc; close all;
+fx = 

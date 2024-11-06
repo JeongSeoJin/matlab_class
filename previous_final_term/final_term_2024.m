@@ -95,23 +95,31 @@ grid on;
 
 %% problem 4
 
-% 4-(1)
-a = 2; x = 2;
-func2 = @(a, t)exp(-a*x).*sin(t.^2);
-ax1 = integral(@(t)func2(a, t), 0, x)
+% 초기 속도와 위치 설정 (km/h에서 m/s로 변환)
+v0 = 300 * 1000 / 3600;  % 초기 속도: 300 km/h -> 83.33 m/s
+x0 = 0;  % 초기 위치
 
-a = 3; x = 3.5;
-ax2 = integral(@(t)func2(a, t), 0, x)
+% 시간 범위 설정
+t_span = [0, 13];  % 충분히 긴 시간 범위
 
-% x = zeros(7);
-% j = 1;
-% a = 3;
-% integral_val = zeros(7);
-% for i=2:0.5:5
-%     x(j) = i;
-%     integral_val(j) = integral(@(t)func2(a, t), 0, x(j));
-%     j = j + 1;
-% 
-% end
-x = 2:0.5:5;
-answer = integral_changing_x(func2, x);
+% 고정된 매개변수 설정
+m = 2;  % 질량
+k = 3;  % 용수철 상수
+
+% ode45를 사용하여 연립 미분방정식 풀기
+[t, X] = ode45(@(t, X) custom_dynamics(t, X), t_span, [x0; v0]);
+
+% 결과에서 위치와 속도 추출
+x = X(:, 1);  % 위치
+v = X(:, 2);  % 속도
+
+% 플로팅
+figure;
+
+% 속도 vs 시간
+subplot(2, 1, 1);
+plot(t, v, 'b-', 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Velocity (m/s)');
+title('Velocity vs. Time');
+grid on;
