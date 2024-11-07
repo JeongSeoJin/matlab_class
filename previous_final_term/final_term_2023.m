@@ -71,9 +71,6 @@ title('Position of mass (m = 0.6)');
 xlabel('Time (s)');
 ylabel('y(t)');
 
-
-
-
 %% problem 2
 clear; clc; close all;
 
@@ -83,6 +80,9 @@ y = [0.1 1.5 3.9 4.8 5.5 5.7];
 figure(2)
 subplot(2, 2, 1);
 plot(x, log(y), 'o:'); title("Graph: x-log(y)");
+
+%% problem 2
+clear; clc; close all;
 
 subplot(2, 2, 2);
 plot(x, 1./y, 'o:'); title("Graph: x-1/y");
