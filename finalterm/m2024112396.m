@@ -88,9 +88,9 @@ y_true_vals = y_true(t);
 
 % 그래프 그리기
 figure(4);
-plot(t, y_true_vals, '-b', 'DisplayName', 'True Value');
+plot(t, y_true_vals, '-');
 hold on;
-plot(t, y_measured_vals, 'or', 'DisplayName', 'Measured Value with Noise');
+plot(t, y_measured_vals, 'o');
 grid on;
 
 % 피팅
